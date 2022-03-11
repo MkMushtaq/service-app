@@ -1,0 +1,20 @@
+{% extends 'complaint_management/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row mx-5 text-center justify-content-md-center ">
+    <div class="col-md-3">
+        <form method="POST" >
+        {% csrf_token %}
+        <fieldset class = "form-group">
+            <legend class="border-bottom mb-4"> Log In </legend>
+            {{form|crispy }}
+        </fieldset>
+
+        <div class="form-group"> <br>
+            <button class="btn btn-primary" type="submit"> Login </button>
+        </div>
+    </form>
+
+    </div>
+</div>
+{% endblock content %}

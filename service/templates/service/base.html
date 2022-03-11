@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body class="bg-light">
+
+    <header class="text-gray-600 body-font bg-blue-500">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-0 md:mb-0">
+<!--            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">-->
+<!--              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>-->
+<!--            </svg>-->
+            <span class="ml-1 text-xl">Airngas Controls</span>
+          </a>
+          <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-gray-900" href="{% url 'home_page' %}">Home</a>
+            <a class="mr-5 hover:text-gray-900" href="{% url 'service_page' %}">Services</a>
+            <a class="mr-5 hover:text-gray-900" href="{% url 'about_page' %}">About</a>
+            <a class="mr-5 hover:text-gray-900" href="{% url 'team_page' %}">Team</a>
+          </nav>
+        </div>
+    </header>
+    <div class="messages">
+        {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+        >
+        <!-- Left -->
+
+        <!-- Left -->
+
+
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+        <div class="container text-center text-md-start mt-5">
+
+            <!-- Grid row -->
+
+            <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3"></i>Airngas Controls
+                </h6>
+                <p>
+                We are authorized dealers and technicians trying to provide feasible air conditioning solutions.
+                </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4 ml-2">
+                Contact
+                </h6>
+                <p><i class="fas fa-home me-3"></i>5th lane, Dwarka Nagar, Vizag</p>
+                <p>
+                <i class="fas fa-envelope me-3"></i>
+                airngas@yahoo.co.in
+                </p>
+                <p><i class="fas fa-phone me-3"></i> + 91 984 984 9627</p>
+                <p><i class="fas fa-print me-3"></i> + 91 986 669 5968</p>
+            </div>
+            <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+<!--        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">-->
+<!--        © 2021 Copyright:-->
+<!--        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">A quote</a>-->
+<!--        </div>-->
+        <!-- Copyright -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>

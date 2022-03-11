@@ -1,0 +1,74 @@
+
+{% extends 'service/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="{% url 'success_page' %}" method = "POST">
+        {% csrf_token %}
+    <div class=" mx-auto flex flex-wrap p-5 flex-col md:flex-col">
+
+
+    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Make a complaint</h1>
+
+       <label class="form-label">Name: *</label>
+       <div class="mb-3 w-50">
+            {{form.customer_name}}
+       </div>
+
+       <label class="form-label">Phone number: *</label>
+       <div class="mb-3 w-50">
+            {{form.customer_mobile}}
+       </div>
+
+       <label class="form-label">Invoice number:</label>
+       <div class="mb-3 w-50">
+            {{form.invoice_number}}
+       </div>
+
+
+       <label class="form-label">Service Requirement: *</label>
+       <div class="mb-3 w-85">
+            {{form.service_requirement}}
+       </div>
+
+
+       <label class="form-label">Address: *</label>
+       <div class="mb-3 w-85">
+            {{form.customer_address}}
+       </div>
+
+        <div class="md:flex-row">
+            <input class="btn btn-primary w-22" type="submit" value="Submit">
+
+            <button class="btn btn-outline-info float-right" type="reset"> Reset </button>
+
+      </div>
+    </div>
+</form>
+
+{% endblock content %}
+
+
+<!--            <label for="invoice_id" class="form-label">Invoice Number(for Airngas's existing customers only):</label>-->
+
+<!--<div class="content-section col-md-8" >-->
+
+<!--    <form action="{% url 'success_page' %}" method = "POST">-->
+<!--        {% csrf_token %}-->
+
+<!--            <fieldset class = "form-group">-->
+<!--                <legend class="border-bottom mb-4"> Register a Complaint </legend>-->
+<!--                {{form|crispy }}-->
+<!--            </fieldset>-->
+
+<!--            <div class="form-group">-->
+<!--                <button class="btn btn-outline-info" type="submit"> Register </button>-->
+<!--            </div>-->
+
+
+<!--    </form>-->
+<!--</div>-->
+
+
+
+

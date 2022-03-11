@@ -1,0 +1,9 @@
+{% extends 'complaint_management/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <p> Thank you! Would you like to <a class="text-primary"  href="{% url 'complaint_info_login_admin_page' %}">login</a> again?</p>
+
+    </div>
+
+{% endblock content %}

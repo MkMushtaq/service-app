@@ -1,0 +1,181 @@
+{% extends 'complaint_management/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load widget_tweaks %}
+<br>
+
+<div class="row ">
+
+  <div class="col-sm-3">
+    <div class="card mx-2">
+      <div class="card-body text-center">
+        <h5 class="card-title">Just Arrived</h5>
+        <p class="card-text"> {{just_arrived_number}} </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card mx-2">
+      <div class="card-body text-center">
+        <h5 class="card-title">Active Complaints</h5>
+        <p class="card-text"> {{active_complaints_number}} </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card mx-2">
+      <div class="card-body text-center">
+        <h5 class="card-title">Pending Complaints</h5>
+        <p class="card-text"> {{pending_complaints_number}} </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card mx-2">
+      <div class="card-body text-center">
+        <h5 class="card-title">Closed Complaints</h5>
+        <p class="card-text"> {{closed_complaints_number}} </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card mx-2">
+      <div class="card-body text-center">
+        <h5 class="card-title">Total Complaints</h5>
+        <p class="card-text">{{total_complaints_number}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<br>
+<div class="mx-2">
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Filter
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+
+        <form method="get">
+            {% csrf_token %}
+
+                <label class="form-label">Customer Name: *</label>
+                  <div class="mb-3 w-50">
+                {% render_field filter_form.form.customer_name class="form-control" %}
+                  </div>
+                <label class="form-label">Technician Name: *</label>
+                <div class="mb-3 w-50">
+                {% render_field filter_form.form.current_technician class="form-control" %}
+                  </div>
+                <label class="form-label">Start Date: *</label>
+                <div class="mb-3 w-50">
+                {% render_field filter_form.form.start_date class="form-control" %}
+                  </div>
+
+                <label class="form-label">End Date: *</label>
+                <div class="mb-3 w-50">
+                {% render_field filter_form.form.end_date class="form-control" %}
+
+                  </div>
+
+                <label class="form-label">Status: *</label>
+                <div class="mb-3 w-50">
+                {% render_field filter_form.form.status class="form-control" %}
+
+                  </div>
+
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+
+<table class="table table-hover table-responsive">
+<thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Customer Name</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Date</th>
+    <th scope="col">Status</th>
+  </tr>
+</thead>
+<tbody>
+{% for complaint in complaints%}
+  <tr>
+      <th scope="row"  data-toggle="modal" data-target="#{{complaint.id}}"> <a href="#"> <u>{{complaint.id}} </u></a> </th>
+    <div class="modal fade" id="{{complaint.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <b class="modal-title w-100" id="exampleModalLabel">Complaint Details</b>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+           <div class="modal-body text-center">
+                  <b> Invoice Number </b>
+                  <p> {{complaint.invoice_number}}</p><br>
+
+                  <b> Service Requirement </b>
+                  <p> {{complaint.service_requirement}}</p><br>
+
+                  <b> Diagnosis Description </b>
+                  <p> {{complaint.diagnosis_description}}</p><br>
+
+
+                  <b> Current Technician </b>
+                  <p> {{complaint.current_technician}}</p><br>
+
+                  <b> Materials Purchased </b>
+                  <p> {{complaint.material_purchased}}</p><br>
+
+                  <b> Price Charged </b>
+                  <p> {{complaint.price_charged}}</p><br>
+
+                  <b> Payment Advance </b>
+                  <p> {{complaint.payment_advance}}</p><br>
+
+                  <b> Material Price </b>
+                  <p> {{complaint.price_of_materials}}</p><br>
+
+                  <b> Technician Assigned </b>
+                  <p> {{complaint.technician_assigned}}</p><br>
+
+                  <b> Customer Address </b>
+                  <p> {{complaint.customer_address}}</p><br>
+           </div>
+
+          </div>
+        </div>
+    </div>
+    <td>{{complaint.customer_name}}</td>
+    <td>{{complaint.customer_mobile}}</td>
+    <td>{{complaint.requested_date}}</td>
+    <td>{{complaint.status}}</td>
+
+
+
+  </tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'service/base.html' %}
+{% block content %}
+<div class="text-center">
+    <br>
+    <h1> <b> Invalid Phone Number</b></h1>
+    <p class="mx-2 my-2">
+        Looks like the phone number, {{customer_mobile}}, is invalid. Click <a href="{% url 'home_page'%}">here</a>
+        to register the complaint again.
+    </p>
+</div>
+
+{% endblock content %}
